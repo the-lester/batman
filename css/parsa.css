@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    overflow-x: hidden;
+    height: 100vh;
+    perspective: 1000px;
+}
+
+.body1 {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    font-weight: bold;
+    padding: 2rem 0;
+    transform-style: preserve-3d;
+}
+
+.left_side {
+    font-size: 1.5rem;
+    align-self: flex-end;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    z-index: 10;
+    transition: transform 0.5s ease;
+}
+
+.left_side_content {
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.left_side_content_bar {
+    width: 100%;
+    border-bottom: 3px dotted rgba(0,0,0,0.3);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.left_side_icons_bar {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.left_side_icons_bar img {
+    width: 2.5rem;
+    height: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+.left_side_icons_bar img:hover {
+    transform: scale(1.2);
+}
+
+.center {
+    position: relative;
+    align-self: center;
+    margin: 0 auto;
+    z-index: 20;
+    width: 25rem;
+    height: 25rem;
+    transition: transform 0.5s ease;
+}
+
+.center_shadow {
+    background: rgba(131, 131, 131, 0.2);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph 8s ease-in-out infinite;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+.center_img_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.center_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.8);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.5s ease;
+}
+
+.birthday-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(195, 207, 226, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.birthday-text {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.center_img_container:hover .birthday-overlay {
+    opacity: 1;
+}
+
+.center_img_container:hover .center_img {
+    transform: scale(1.05);
+}
+
+.right {
+    align-self: center;
+    margin-right: 5%;
+    background: rgba(235, 235, 235, 0.7);
+    border-bottom: 3px dotted rgba(0,0,0,0.3);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.5s ease;
+}
+
+.right_content {
+    font-size: 3.5rem;
+    margin: 0.5rem 0;
+    color: #333;
+    letter-spacing: 2px;
+}
+
+#typewriter-text {
+    border-right: 3px solid #333;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@media (max-width: 1200px) {
+    .body1 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .left_side, .right {
+        margin: 2rem auto;
+        width: 90%;
+        text-align: center;
+    }
+    
+    .left_side_icons_bar {
+        justify-content: center;
+    }
+    
+    .center {
+        width: 20rem;
+        height: 20rem;
+    }
+    
+    .right_content {
+        font-size: 2.5rem;
+    }
+    
+    .birthday-text {
+        font-size: 1.5rem;
+    }
+}
